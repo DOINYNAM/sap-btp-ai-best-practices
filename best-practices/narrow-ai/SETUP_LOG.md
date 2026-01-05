@@ -297,24 +297,41 @@ BTP_AI_BP.OVERNIGHTSTAYS  (O)
 
 ---
 
-## 10. 남은 확인 사항
+## 10. Script Server 활성화 완료 ✅
 
-### Script Server 관련
-- [ ] 현재 인스턴스 스펙 확인 (vCPU, 메모리)
-- [ ] Script Server 활성화 여부 확인
-- [ ] 필요 시 BTP Cockpit에서 Script Server 활성화
+### 인스턴스 스펙 업그레이드
+**인스턴스명**: `SAP_HANA_Vector_Toy_Project_2406`
 
-### 인스턴스 스펙 조정
-- [ ] 64GB 필요 여부 재검토 (48GB로 충분할 수 있음)
-- [ ] PAL 작업 시에만 인스턴스 Start, 평소엔 Stop으로 비용 절감
+**업그레이드 내역**:
+- **메모리**: 48GB
+- **스토리지**: 160GB
+- **컴퓨팅**: 3 vCPU
 
-### 테스트
-- [ ] `PAL_ADMIN` 계정으로 테이블 생성 테스트
-- [ ] PAL 함수 실행 테스트 (Script Server 활성화 후)
+**결과**: ✅ Script Server 활성화 성공
+
+### 테스트 완료
+- [x] 인스턴스 스펙 업그레이드 (3 vCPU 이상)
+- [x] BTP Cockpit에서 Script Server 활성화
+- [x] Script Server 상태 확인
+- [x] Time Series Forecasting 테스트 코드 실행 완료
+
+**결론**:
+- 48GB 메모리 + 3 vCPU로 PAL 사용 가능 확인
+- 64GB까지 올릴 필요 없음 (48GB로 충분)
+- Script Server 정상 작동 확인
 
 ---
 
-## 11. 참고 문서
+## 11. 남은 확인 사항
+
+### 향후 작업
+- [ ] 다른 PAL 함수들 테스트 (classification, clustering 등)
+- [ ] 비용 최적화: 사용 안 할 때 인스턴스 Stop
+- [ ] 프로덕션 환경 구성 (필요 시)
+
+---
+
+## 12. 참고 문서
 
 ### SAP 공식 문서
 - [SAP KBA 3216010 - Enable/Disable Script Server](https://userapps.support.sap.com/sap/support/knowledge/en/3216010)
@@ -329,7 +346,7 @@ BTP_AI_BP.OVERNIGHTSTAYS  (O)
 
 ---
 
-## 12. 핵심 교훈
+## 13. 핵심 교훈
 
 1. **보안**: DBADMIN 직접 사용 X → 프로젝트 전용 계정 생성 O
 2. **구조**: 공통 설정은 상위 폴더에서 중앙 관리
@@ -340,5 +357,6 @@ BTP_AI_BP.OVERNIGHTSTAYS  (O)
 ---
 
 **작성자**: Claude Code
-**작업 기간**: 2025-12-31
-**상태**: ✅ 설정 완료, Script Server 활성화 대기 중
+**작업 시작**: 2025-12-31
+**Script Server 활성화**: 2026-01-05
+**상태**: ✅ 전체 설정 완료, Time Series Forecasting 테스트 성공
